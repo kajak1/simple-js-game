@@ -37,4 +37,9 @@ class Player{
             ctx.fillRect(this.offsetX, this.posY, this.width, this.height)
         }
     }
+
+    // draw(direction){
+    //     this.create()
+    //     this.move(direction)
+    // }
 }

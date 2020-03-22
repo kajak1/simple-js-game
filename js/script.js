@@ -6,10 +6,11 @@ const height = 450
 const player_width = 20
 const player_height = 100
 
-const left_player = new Player(player_width, player_height, 'left')
-const right_player = new Player(player_width, player_height, 'right')
+// const left_player = new Player(player_width, player_height, 'left')
+// const right_player = new Player(player_width, player_height, 'right')
 const ball = new Ball(10)
-const main = new Main(left_player, right_player, ball)
+// const clean = new Cleaner()
+const main = new Main(ball)
 
 function set_size(){
     canvas.width = width;

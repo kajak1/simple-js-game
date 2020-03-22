@@ -3,6 +3,10 @@ class Ball{
         this.radius = radius
         this.posX = (width - radius)/2
         this.posY = (height - radius)/2
+        this.direcX = width
+        this.direcY = height
+        this.incrementX = 5
+        this.incrementY = 4
     }
 
     create(){
@@ -11,15 +15,26 @@ class Ball{
         ctx.fill();
         ctx.stroke();
     }
-    
 
     move(){
-        // while(this.posX < width-30){
-            console.log(this)
-            ctx.clearRect(30, 0, width-60, height)
-            this.posX += 10
-            this.create()
+        ctx.clearRect(0, 0, width, height)
+        // if (this.posX < 0 || this.posX > width - 20) {
+        //     this.direcX = -this.direcX;
         // }
-        window.requestAnimationFrame(this.move).bind(this)
+        // if (this.posY < 0 || this.posY > height - 20) {
+        //     this.direcY = -this.direcY;
+        // }
+        if(this.posX >= (width - this.radius) || this.posX <= this.radius){
+            console.log(this.posX)
+            this.incrementX = -this.incrementX
+        }
+        if(this.posY >= (height - this.radius) || this.posY <= this.radius){
+            console.log(this.posY)
+            this.incrementY = -this.incrementY
+        }
+            this.posX += this.incrementX
+            this.posY += this.incrementY
+        this.create()
+        window.requestAnimationFrame(this.move.bind(this))
     }
 }
