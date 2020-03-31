@@ -4,13 +4,13 @@ class Player{
         this.height = height
         this.posY = 0
         this.offsetY = 0
+        this.side = side
         if(side === 'left'){
             this.offsetX = 10
         }
         if(side === 'right'){
             this.offsetX = 600 - this.width - 10
         }
-        this.side = side
     }
 
     create(){
@@ -32,6 +32,7 @@ class Player{
             }
             this.posY += 10
             console.log(this.posY)
+            console.log(`odlegosc to ${this.posY}, zajmuje od ${this.posY} do ${this.posY + this.height}`)
         }
 
         if(UP_pressed && this.side === 'right'){

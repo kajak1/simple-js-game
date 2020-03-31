@@ -8,7 +8,6 @@ const player_height = 100
 
 const left_player = new Player(player_width, player_height, 'left')
 const right_player = new Player(player_width, player_height, 'right')
-
 const ball = new Ball(10)
 const main = new Main(ball, left_player, right_player)
 

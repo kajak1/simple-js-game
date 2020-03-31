@@ -5,8 +5,8 @@ class Ball{
         this.posY = (height - radius)/2
         this.direcX = width
         this.direcY = height
-        this.incrementX = 7
-        this.incrementY = 12
+        this.incrementX = -5
+        this.incrementY = 0
     }
 
     create(){
@@ -16,19 +16,21 @@ class Ball{
         ctx.stroke();
     }
 
+    detect_collision(){
+        // odbijanie od krawędzi
+            // od lewego
+        if(this.posX >= (width - this.radius) || this.posX <= this.radius || (this.posX <= (left_player.offsetX + left_player.width) && (this.posY >= left_player.posY && (this.posY <= left_player.posY + left_player.height))) || (this.posX >= (right_player.offsetX) && (this.posY >= right_player.posY && (this.posY <= right_player.posY + right_player.height)))){
+            this.incrementX = -this.incrementX
+        }
+
+        if(this.posY >= (height - this.radius) || this.posY <= this.radius){
+            this.incrementY = -this.incrementY
+        }
+    }
     
 
     move(){
-        // ctx.clearRect(0, 0, width, height)
-        // this.create()
-        if(this.posX >= (width - this.radius) || this.posX <= this.radius){
-            // console.log(this.posX)
-            this.incrementX = -this.incrementX
-        }
-        if(this.posY >= (height - this.radius) || this.posY <= this.radius){
-            // console.log(this.posY)
-            this.incrementY = -this.incrementY
-        }
+        this.detect_collision()
         this.posX += this.incrementX
         this.posY += this.incrementY
     }
