@@ -35,3 +35,5 @@ class Ball{
         this.posY += this.incrementY
     }
 }
+
+console.log('dupa')

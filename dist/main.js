@@ -14,3 +14,5 @@ class Main{
         })
     }
 }
+
+console.log('xd')
