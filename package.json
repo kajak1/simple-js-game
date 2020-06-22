@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/kajak1/simple-js-game/issues"
   },
-  "homepage": "https://github.com/kajak1/simple-js-game#readme"
+  "homepage": "https://github.com/kajak1/simple-js-game#readme",
+  "devDependencies": {
+    "eslint": "^7.3.0"
+  }
 }
