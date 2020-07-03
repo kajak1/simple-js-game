@@ -10,6 +10,10 @@ class Main{
                 el.create()
                 el.move()
             })
+            if(this.if_game_over() == true){
+                game.end()
+                return
+            }
             this.render()
         })
     }

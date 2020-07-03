@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/kajak1/simple-js-game#readme",
   "devDependencies": {
-    "eslint": "^7.3.0"
+    "eslint": "^7.3.0",
+    "prettier": "^2.0.5"
   }
 }
