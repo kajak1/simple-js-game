@@ -7,12 +7,11 @@ class Player{
         this.side = side
         if(side === 'left'){
             this.offsetX = 10
-            this.prawa_krawedz = this.offsetX + this.width
+            this.right_border = this.offsetX + this.width
         }
         if(side === 'right'){
             this.offsetX = canv_width - this.width - 10
-            // console.log(this.offsetX)
-            this.lewa_krawedz = this.offsetX
+            this.left_border = this.offsetX
         }
     }
 
@@ -26,16 +25,13 @@ class Player{
                 return
             }
             this.posY -= 10
-            // console.log(this.posY)
         }
 
         if(S_pressed && this.side === 'left'){
-            if(this.posY > 340){
+            if(this.posY > canv_height - this.height){
                 return
             }
             this.posY += 10
-            // console.log(this.posY)
-            // console.log(`odlegosc to ${this.posY}, zajmuje od ${this.posY} do ${this.posY + this.height}`)
         }
 
         if(UP_pressed && this.side === 'right'){
@@ -43,15 +39,14 @@ class Player{
                 return
             }
             this.posY -= 10
-            // console.log(this.posY)
         }
 
         if(DOWN_pressed && this.side === 'right'){
-            if(this.posY > 340){
+            console.log(this.posY)
+            if(this.posY >= canv_height - this.height){
                 return
             }
             this.posY += 10
-            // console.log(this.posY)
         }
     }
 }

@@ -3,10 +3,8 @@ class Ball{
         this.radius = radius;
         this.posX = (canv_width - radius)/2;
         this.posY = (canv_height - radius)/2;
-        // this.direcX = canv_width;
-        // this.direcY = canv_height;
         this.incrementX = 7;
-        this.incrementY = 0;
+        this.incrementY = 2;
         this.bouncable = true
         this.bounced = false
     }
@@ -21,15 +19,15 @@ class Ball{
     detect_collision(){
         // lewy gracz
         if(this.posX < canv_width/2){
-            if(this.posX < left_player.prawa_krawedz - this.radius){
+            if(this.posX < left_player.right_border - this.radius){
                 this.bouncable = false 
             }
-            if(this.posX > left_player.prawa_krawedz + this.radius + 1){
+            if(this.posX > left_player.right_border + this.radius + 1){
                 this.bouncable = true
                 this.bounced = false
             }
-            if((this.posX <= left_player.prawa_krawedz + this.radius 
-                && this.posX >= (left_player.prawa_krawedz - this.radius)) 
+            if((this.posX <= left_player.right_border + this.radius 
+                && this.posX >= (left_player.right_border - this.radius)) 
             && (this.posY > left_player.posY && this.posY < left_player.posY + left_player.height)){
                 console.log(this.bouncable)
                 if(this.bouncable == true && this.bounced == false){
@@ -41,15 +39,15 @@ class Ball{
 
         // prawy gracz
         if(this.posX > canv_width/2){
-            if(this.posX > right_player.lewa_krawedz + this.radius){
+            if(this.posX > right_player.left_border + this.radius){
                 this.bouncable = false
             }
-            if(this.posX < right_player.lewa_krawedz - this.radius - 1){
+            if(this.posX < right_player.left_border - this.radius - 1){
                 this.bouncable = true
                 this.bounced = false
             }
-            if((this.posX >= right_player.lewa_krawedz - this.radius
-                && this.posX <= right_player.lewa_krawedz + this.radius)
+            if((this.posX >= right_player.left_border - this.radius
+                && this.posX <= right_player.left_border + this.radius)
             && (this.posY > right_player.posY && this.posY < right_player.posY + right_player.height)){
                 if(this.bouncable == true && this.bounced == false){
                     this.incrementX *= -1
@@ -79,8 +77,9 @@ class Ball{
     }
 
     bounce_angle(){
-        if(this.bounced == true)
+        // if(this.bounced == true)
     }
+    
 
     move(){
         this.detect_collision()
@@ -91,6 +90,7 @@ class Ball{
         // }else{
         //     this.posX += this.incrementX
         // }
+        
         this.posX += this.incrementX
         this.posY += this.incrementY
     }

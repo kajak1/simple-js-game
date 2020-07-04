@@ -2,6 +2,8 @@ const dpi = window.devicePixelRatio;
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let canv_width = null;
+// let canv_width = +getComputedStyle(canvas).getPropertyValue("width").slice(0, -2);;
+// let canv_height = +getComputedStyle(canvas).getPropertyValue("height").slice(0, -2);;
 let canv_height = null;
 
 const player_width = 20;
@@ -12,12 +14,13 @@ function fix_dpi(){
     const style_height = +getComputedStyle(canvas).getPropertyValue("height").slice(0, -2);
 
     canvas.setAttribute('width', style_width * dpi);
-    canvas.setAttribute('height', style_height * dpi);
+    canvas.setAttribute('height', style_height * dpi * 1.5);
 
     canv_width = style_width * dpi;
     console.log(canv_width)
-    canv_height = style_height * dpi;
+    canv_height = style_height * dpi * 1.5;
     console.log(canv_height)
+    // canvas.classList.add('xd')
 }
 
 let W_pressed = null
