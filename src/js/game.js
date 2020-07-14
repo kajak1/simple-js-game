@@ -4,22 +4,27 @@ class Game{
         this.started = false
     }
 
-    is_over(){
-        if(out_of_bounds == true){
-            return true
-        }
-        return false
+    reset(){
+        this.objects.forEach( (el) => {
+            const {x, y} = el.def_pos
+            el.posX = x
+            el.posY = y
+        })
     }
 
     run(){
         window.requestAnimationFrame( () => {
             ctx.clearRect(0, 0, canv_width, canv_height)
             this.objects.forEach( (el) => {
-                el.create()
-                el.move()
+                el.update()
             })
-            if(this.is_over()){
+            ctx.font = '30px Roboto'
+            ctx.fillText(`${left_player.score}`, 20, 30)
+            ctx.fillText(`${right_player.score}`, canv_width - 40, 30)
+            if(left_player.score === 1 || right_player.score === 1){
                 game.end()
+                game.reset()
+                return
             }
             this.run()
         })
@@ -42,7 +47,17 @@ class Game{
     end(){
         ctx.fillStyle = 'rgba(173, 173, 173, 0.5)'
         ctx.fillRect(0, 0, canv_width, canv_height)
+        ctx.fillStyle = '#000'
+        ctx.font = '20px Roboto'
+        ctx.textBaseline = 'middle'
+        ctx.textAlign = 'center'
+        if(left_player.score > right_player.score){
+            ctx.fillText('left player wins, press enter to play again', canv_width/2, canv_height/2)
+        }else if(left_player.score < right_player.score){
+            ctx.fillText('right player wins, press enter to play again', canv_width/2, canv_height/2)
+        }
+        left_player.score = 0
+        right_player.score = 0
         this.started = false
     }
-
 }

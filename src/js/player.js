@@ -4,6 +4,10 @@ class Player{
         this.height = height
         this.posY = 0
         this.offsetY = 0
+        this.def_pos = {
+            x:  this.offsetX,
+            y:  this.posY
+        }
         this.side = side
         if(side === 'left'){
             this.offsetX = 10
@@ -13,6 +17,7 @@ class Player{
             this.offsetX = canv_width - this.width - 10
             this.left_border = this.offsetX
         }
+        this.score = 0
     }
 
     create(){
@@ -48,5 +53,17 @@ class Player{
             }
             this.posY += 10
         }
+    }
+
+    check_score(){
+        // if(this.score === 1){
+        //     game.end()
+        // }
+    }
+
+    update(){
+        this.create()
+        this.move()
+        this.check_score()
     }
 }
